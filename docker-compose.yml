@@ -1,0 +1,15 @@
+version: '2'
+services:
+  wordpressweb:
+    image: php:5.6-apache
+    links:
+    - wordpressdb:mysql
+    ports:
+      - 8080:80
+
+  wordpressdb:
+    image: mysql
+    volumes:
+      - /tmp/db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=sqlpa55
